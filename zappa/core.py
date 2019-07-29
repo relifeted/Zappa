@@ -2743,14 +2743,14 @@ class Zappa(object):
                 service = self.service_from_arn(event_source['arn'])
 
                 if service not in pull_services:
-                    svc = ','.join(event['event_source']['events'])
+                    # svc = ','.join(event['event_source']['events'])
                     self.create_event_permission(
                         lambda_name,
                         service + '.amazonaws.com',
                         event['event_source']['arn']
                     )
-                else:
-                    svc = service
+                # else:
+                svc = service
 
                 rule_response = add_event_source(
                     event_source,

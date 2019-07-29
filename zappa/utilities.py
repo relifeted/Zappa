@@ -387,6 +387,10 @@ def get_event_source(event_source, lambda_arn, target_function, boto_session, dr
         ctx.environment = arn_back
         funk.arn = arn_front
         funk.name = ':'.join([arn_back, target_function])
+    elif svc == 'events':
+        _, _, _, _, _, _, funk_name = lambda_arn.split(':')
+        funk.name = funk_name
+        funk.arn = lambda_arn
     else:
         funk.arn = lambda_arn
 
